@@ -1,19 +1,34 @@
 import React, { useRef, useState } from 'react'
-import { Grid, Input, Button } from 'antd-mobile'
-
+import { Grid, Input, Button, Toast } from 'antd-mobile'
 import styles from './index.module.scss'
 
 
 export default function Login() {
     const [value, setValue] = useState('')
-    const myValue = useRef()
+    const [loading, setLoading] = useState(false)
 
-    function getValue() {
-        React.$API.auth.login.get({ phone: '17773810468' }).then(res => {
-            console.log(res);
-        })
+    //号码验证
+    async function getValue() {
+        setLoading(true)
+        let { data: res } = await React.$API.auth.login.get({ phone: value })
+        if (res.hasPassword) {
+            setTimeout(() => {
+                toast('验证成功')
+            }, 1000)
+        } else {
+            toast('此号码没有注册')
+        }
 
     }
+    //轻提示
+    function toast(msg) {
+        Toast.show({
+            content: msg,
+        })
+        setLoading(false)
+    }
+
+
     return (
         <>
             <Grid columns={8} gap={0}>
@@ -31,7 +46,7 @@ export default function Login() {
                             <div className={styles.login_input}>
                                 <Input type='number' autoFocus={true} style={{ paddingLeft: '5px' }} placeholder='输入手机号码' value={value.length > 11 ? value.slice(0, 11) : value} onChange={val => setValue(val)} />
                             </div>
-                            <Button block size='large' className={styles.buttom} onClick={getValue}>一键登录</Button>
+                            <Button block size='large' className={styles.buttom} onClick={getValue} loading={loading} loadingText='正在登录'>一键登录</Button>
                         </div>
                     </div>
                 </Grid.Item>

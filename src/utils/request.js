@@ -27,7 +27,8 @@ service.interceptors.request.use(
 
 service.interceptors.response.use(
     (config) => {
-        
+
+        return config;
     },
     (error) => {
         return Promise.reject(error.response);
@@ -36,7 +37,7 @@ service.interceptors.response.use(
 
 var http = {
     get: function (url, params = {}, config = {}) {
-   
+       
         return new Promise((resolve, reject) => {
             service({
                 method: 'get',
@@ -44,6 +45,7 @@ var http = {
                 params: params,
                 ...config
             }).then((response) => {
+              
                 resolve(response);
             }).catch((error) => {
                 reject(error);
