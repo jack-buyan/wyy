@@ -1,19 +1,32 @@
-import React, { useRef, useState } from 'react'
+import React, { useState } from 'react'
 import { Grid, Input, Button, Toast } from 'antd-mobile'
+import { routers } from '../../router'
+import { useRoutes, useNavigate } from 'react-router-dom'
+
+import tool from '../../utils/tool'
 import styles from './index.module.scss'
 
 
 export default function Login() {
+    const navigate = useNavigate()
     const [value, setValue] = useState('')
     const [loading, setLoading] = useState(false)
+    const element = useRoutes(routers)
 
     //号码验证
     async function getValue() {
+
         setLoading(true)
         let { data: res } = await React.$API.auth.login.get({ phone: value })
         if (res.hasPassword) {
+
             setTimeout(() => {
                 toast('验证成功')
+                let token = tool.cryptoObj.encryptFunc(`${value}&${tool.cryptoObj.gettime}`) //自定义token
+                navigate('/home')
+                tool.cookie.set("TOKEN", token, {
+                    expires: 2 * 60 * 60
+                })
             }, 1000)
         } else {
             toast('此号码没有注册')
@@ -54,7 +67,7 @@ export default function Login() {
                     <div></div>
                 </Grid.Item>
             </Grid>
-
+            {element}
         </>
     )
 }

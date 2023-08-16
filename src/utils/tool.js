@@ -1,3 +1,5 @@
+import CryptoJS from "crypto-js"
+
 const tool = {}
 
 /*cookie*/
@@ -40,4 +42,21 @@ tool.cookie = {
 	}
 }
 
+tool.cryptoObj = {
+	  /* 加密 */
+	  encryptFunc: (message) => {
+        var key = 'ede16d438c38862c';//前后端的秘钥
+        var keyHex = CryptoJS.enc.Utf8.parse(key);
+        var encrypted = CryptoJS.AES.encrypt(message, keyHex, {
+            mode: CryptoJS.mode.ECB,
+            padding: CryptoJS.pad.Pkcs7
+        });
+        return encrypted.toString();
+    },
+    //获取精确
+    gettime: () => {
+        var time = Date.parse(new Date()).toString(); //精确到毫秒
+        return time.substr(0, 10); //精确到秒
+    },
+}
 export default tool

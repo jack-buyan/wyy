@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import { BrowserRouter,Suspense } from "react-router-dom";
 import { Provider } from 'react-redux'
 import api from './api'
+import AuthRouter from './utils/authRouter';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
@@ -12,12 +13,14 @@ React.$API = api;//全局
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>
+    <AuthRouter>
     <React.StrictMode>
       <Provider store={store}>
         <App />
       </Provider>
 
-    </React.StrictMode>
+      </React.StrictMode>
+      </AuthRouter>
   </BrowserRouter>
 );
 
