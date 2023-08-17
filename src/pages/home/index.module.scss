@@ -1,0 +1,33 @@
+
+.box{
+   display: flex;
+   width: 100%;
+   justify-content: center;
+   padding-top: 10px;
+
+   .box_left,.box_right{
+      width: 15%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+     
+      i{
+         font-size: 20px;
+      }
+   }
+
+      .box_input{
+      flex: 1;
+      padding: 5px 0 5px  30px;
+      // border: 1px solid rgb(219, 219, 219);
+      border-radius: 50px;
+      position: relative;
+      background: rgb(243, 244, 246);
+      .icon{
+         position: absolute;
+         color: rgb(118, 110, 134);
+         left: 5px;
+         top: 7px;
+      }
+   }
+}
