@@ -8,16 +8,12 @@ export default {
         get: async function (params) {
             return await http.get(this.url, params);
         }
+    },
+    banner: {
+        url: `${config.API_URL}/banner`,
+        name: '获取轮播图',
+        get: async function (params) {
+            return await http.get(this.url, params);
+        }
     }
-
-    
 }
-
-
-// export const login = (params) => {
-//     return request({
-//         url: `${config.API_URL}/cellphone/existence/check`,
-//         method: 'get',
-//         params
-//     })
-// }

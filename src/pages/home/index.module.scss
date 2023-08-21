@@ -1,4 +1,9 @@
-
+.font_dark{
+   color: white;
+}
+.font_light{
+   color: #333;
+}
 .box{
    display: flex;
    width: 100%;
@@ -30,4 +35,6 @@
          top: 7px;
       }
    }
+
+ 
 }

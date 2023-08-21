@@ -1,6 +1,11 @@
 $color:red;
+ul{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
 .box{
-    padding: 0 10px ;
 
 .title{
     display: flex;
@@ -8,12 +13,68 @@ $color:red;
     justify-content: space-around;
     align-items: center;
     font-size:16px;
+    background: white;
+
+
     .title_left{
-        width: 80%;
+        width:50%;
     }
     i{
         
         font-size: 16px;
+    }
+}
+.cardOne{
+  
+    background: white;
+    margin: 10px;
+    border-radius: 10px;
+    
+    .other{
+    //    padding:  0 15px;
+       --color: red !important;
+       li:nth-child(1){
+         padding: 10px 0 0 0;
+
+         span{
+            padding-left: 10px;
+            font-size: 12px;
+         }
+    
+       }
+       li{
+        .mode{
+            display: flex;
+            align-items: center;
+            padding: 0 10px;
+        
+            p{
+               flex: 1;
+                padding-left: 10px;
+            }
+            .switch{
+                width: 15%;
+            }
+            :global{
+                .adm-switch-checkbox{
+                    height: 10px !important;
+                  
+                }
+                .adm-switch-handle{
+                    top: -4px !important;
+                    width: 18px;
+                    height: 18px;
+                    background: rgb(250, 58, 57);
+
+                }
+                .adm-switch-checkbox::before{
+                    background:none !important;
+                }
+            }
+          
+        }
+       }
+        
     }
 }
 }
