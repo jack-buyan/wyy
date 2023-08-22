@@ -2,10 +2,9 @@ import React, { useState } from 'react'
 import { Popup, Divider, Switch } from 'antd-mobile'
 import { setMode, setColorPrimary } from '../../store/reducers'
 import styles from './index.module.scss'
-
-import { useDispatch, useSelector } from 'react-redux'
-
+import { useDispatch } from 'react-redux'
 import DEFAULT_CONFIG from '../../config'
+
 export default function PopupModel({ visible, setVisible }) {
 
     const mode = JSON.parse(localStorage.getItem('COLOR'))

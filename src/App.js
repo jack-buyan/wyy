@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { useRoutes } from 'react-router-dom'
 import { routers } from './router'
+import TabBars from './components/TabBars'
 import DEFAULT_CONFIG from './././config'
 import './App.scss'
 
@@ -20,7 +21,9 @@ export default function App() {
       },
     }}>
       <div style={{ background: colorPrimary }}>
+
         {element}
+        <TabBars />
       </div>
     </ConfigProvider>
   )

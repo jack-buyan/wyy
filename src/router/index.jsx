@@ -4,7 +4,10 @@ import AuthRouter from "../utils/authRouter";
 
 const Login = lazy(() => import('../pages/login'))
 const Home = lazy(() => import('../pages/home'))
-
+const Podcasts = lazy(() => import('../pages/podcasts'))
+// import Login from '../pages/login'
+// import Home from '../pages/home'
+// import Podcasts from '../pages/podcasts'
 export const routers = [
     // 需要鉴权的组件home
     {
@@ -16,6 +19,11 @@ export const routers = [
         path: '/login',
         element: <Login />,
         name: '登录'
+    },
+    {
+        path: '/podcasts',
+        element: <Podcasts />,
+        name: '播客'
     },
     {
         path: '/',
