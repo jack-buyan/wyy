@@ -46,7 +46,7 @@ export default function TabBars() {
         navigate(val)
     }
     return (
-        <div style={{ position: 'fixed', width: '100%', zIndex: '99999', bottom: '0', background: `${mode ? DEFAULT_CONFIG.dark.COLOR : '#fff'}` }}>
+        <div style={{ position: 'fixed', width: '100%', bottom: '0', background: `${mode ? DEFAULT_CONFIG.dark.COLOR : '#fff'}` }}>
             <TabBar onChange={val => getValue(val)}>
                 {tabs.map(item => (
                     <TabBar.Item key={item.key} icon={item.icon} title={item.title} />

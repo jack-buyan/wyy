@@ -4,7 +4,16 @@
 .font_light{
    color: #333;
 }
+
+.outerLayer{
+
+   padding-bottom: 45px;
+   ::-webkit-scrollbar{
+    display: none;
+   }
+}
 .box{
+
    display: flex;
    width: 100%;
    justify-content: center;
@@ -40,6 +49,7 @@
 }
 
 .navs{
+  
    ::-webkit-scrollbar{
       width: 0;
    }
@@ -50,7 +60,7 @@
 
       overflow-y: auto;
    
-      -webkit-overflow-scrolling: touch;
+   
       li{
          display: flex;
          flex-direction: column;

@@ -4,56 +4,52 @@ import { Swiper } from 'antd-mobile'
 import styles from './index.module.scss'
 
 
-export default function List({ music }) {
-
+export default function List({ music, mode }) {
+    const [array, setArray] = useState()
     if (!music.length) return
 
 
 
+    function arrayChunk(array, size) {
+        let data = []
+        for (let i = 0; i < array.length; i += size) {
+            data.push(array.slice(i, i + size))
+        }
+
+        return data
+    }
+    let arr = arrayChunk(music, 3)
     return (
         <div className={styles.box}>
+            <p className={styles.title} style={{ color: `${mode ? '#fff' : ''}` }}>治愈温暖你的时光 </p>
             <div style={{ width: '100%', overflow: 'auto' }}>
                 <ul className={styles.list}>
-                    <li className={styles.left}>
-                        <ul className={styles.listZj}>
-                            <li className={styles.leftZj}>
-                                <div className={styles.img}></div>
-                                <div className={styles.leftText}>
-                                    <p>标题</p>
-                                    <span>描述</span>
-                                </div>
-                            </li>
 
-                            <li className={styles.leftZj}>
-                                <div className={styles.img}></div>
-                                <div className={styles.leftText}>
-                                    <p>标题</p>
-                                    <span>描述</span>
-                                </div>
-                            </li>
-                        </ul>
-                    </li>
-                    <li className={styles.list}>
-                        <li className={styles.left}>
-                            <ul className={styles.listZj}>
-                                <li className={styles.leftZj}>
-                                    <div className={styles.img}></div>
-                                    <div className={styles.leftText}>
-                                        <p>标题</p>
-                                        <span>描述</span>
-                                    </div>
-                                </li>
+                    {
+                        arr.map((e, i) => (
+                            <li className={styles.left} key={i}>
+                                <ul className={styles.listZj}>
 
-                                <li className={styles.leftZj}>
-                                    <div className={styles.img}></div>
-                                    <div className={styles.leftText}>
-                                        <p>标题</p>
-                                        <span>描述</span>
-                                    </div>
-                                </li>
-                            </ul>
-                        </li>
-                    </li>
+
+                                    {
+                                        e.map((s, j) => (
+                                            <li className={styles.leftZj} key={j}>
+                                                <img src={s.picUrl} className={styles.img}></img>
+                                                <div className={styles.leftText} style={{ color: `${mode ? '#fff' : ''}` }}>
+                                                    <p>{s.name}</p>
+                                                    <span>{s.song.artists[0].name}</span>
+                                                </div>
+                                            </li>
+                                        ))
+                                    }
+
+
+                                </ul>
+                            </li>
+                        ))
+                    }
+
+
                 </ul>
             </div>
         </div>

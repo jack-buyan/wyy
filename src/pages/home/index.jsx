@@ -1,5 +1,5 @@
 import React from 'react'
-import { Input, Swiper, Grid, CapsuleTabs } from 'antd-mobile'
+import { Input, Swiper, Grid, Divider } from 'antd-mobile'
 import { SearchOutline } from 'antd-mobile-icons'
 import styles from './index.module.scss'
 import { useState } from 'react'
@@ -91,50 +91,57 @@ export default function Home() {
     ))
 
     return (
-        <div>
-            <div className={styles.box} style={{ color: `${mode ? '#fff' : '#666'}` }}>
-                <div className={styles.box_left}>
-                    <i className='iconfont icon-caidan' onClick={isVisible}></i>
-                </div>
-                <div className={styles.box_input}>
-                    <SearchOutline fontSize={20} className={styles.icon} />
-                    <Input placeholder='请输入内容' clearable value={value} onChange={val => { setValue(val) }} color='var(--adm-color-weak)' />
-                </div>
-                <div className={styles.box_right}>
+        <div className={styles.outerLayer}>
+            <div style={{ overflowX: 'auto' }}>
+                <div className={styles.box} style={{ color: `${mode ? '#fff' : '#666'}` }}>
+                    <div className={styles.box_left}>
+                        <i className='iconfont icon-caidan' onClick={isVisible}></i>
+                    </div>
+                    <div className={styles.box_input}>
+                        <SearchOutline fontSize={20} className={styles.icon} />
+                        <Input placeholder='请输入内容' clearable value={value} onChange={val => { setValue(val) }} color='var(--adm-color-weak)' />
+                    </div>
                     <div className={styles.box_right}>
-                        <i className='iconfont icon-luyin'></i>
+                        <div className={styles.box_right}>
+                            <i className='iconfont icon-luyin'></i>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <PopupModel visible={visible} setVisible={setVisible} />
-            <Grid columns={3} gap={8}>
-                <Grid.Item span={3}>
-                    <div className={styles.banner} style={{ padding: '15px 10px' }}>
-                        <Swiper autoplay loop indicatorProps={{
-                            color: 'white',
-                        }} style={{
-                            '--border-radius': '8px',
-                            '--height': 'auto',
-                        }}>{items}</Swiper>
-                    </div>
-                </Grid.Item>
-            </Grid>
+                <PopupModel visible={visible} setVisible={setVisible} />
+                <Grid columns={3} gap={8}>
+                    <Grid.Item span={3}>
+                        <div className={styles.banner} style={{ padding: '15px 10px' }}>
+                            <Swiper autoplay loop indicatorProps={{
+                                color: 'white',
+                            }} style={{
+                                '--border-radius': '8px',
+                                '--height': 'auto',
+                            }}>{items}</Swiper>
+                        </div>
+                    </Grid.Item>
+                </Grid>
 
-            <div className={styles.navs}>
-                <ul>
-                    {
-                        imgList.map((e, i) => (
-                            <li key={i}>
-                                <span style={{ display: e.name == '每日推荐' ? 'block' : 'none', fontSize: 16, position: 'absolute', top: '18px', fontWeight: 700, color: `${mode ? 'rgb(12,12,14)' : '#fff'}` }}>{data.getDate()}</span>
-                                <img src={e.url} alt="" />
-                                <span style={{ color: `${mode ? '#FFF' : '#666'}` }}>{e.name}</span>
-                            </li>
-                        ))
-                    }
-                </ul>
+                <div className={styles.navs}>
+                    <ul>
+                        {
+                            imgList.map((e, i) => (
+                                <li key={i}>
+                                    <span style={{ display: e.name == '每日推荐' ? 'block' : 'none', fontSize: 16, position: 'absolute', top: '18px', fontWeight: 700, color: `${mode ? 'rgb(12,12,14)' : '#fff'}` }}>{data.getDate()}</span>
+                                    <img src={e.url} alt="" />
+                                    <span style={{ color: `${mode ? '#FFF' : '#666'}` }}>{e.name}</span>
+                                </li>
+                            ))
+                        }
+                    </ul>
+                </div>
+                <Recommend playlist={playlist} mode={mode} />
+                <Divider style={{
+
+                    borderColor: `${mode ? 'rgb(44, 44, 44)' : ''}`,
+
+                }} />
+                <List music={music} mode={mode} />
             </div>
-            <Recommend playlist={playlist} mode={mode} />
-            <List music={music} />
         </div >
     )
 }

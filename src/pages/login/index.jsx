@@ -57,7 +57,7 @@ export default function Login() {
                 let token = tool.cryptoObj.encryptFunc(`${value}&${tool.cryptoObj.gettime}`) //自定义token
                 navigate('/home')
                 tool.cookie.set("TOKEN", token, {
-                    expires: 2 * 60 * 60
+                    expires: 15
                 })
             }, 1000)
         } else {

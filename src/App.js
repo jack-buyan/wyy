@@ -1,7 +1,7 @@
 import { ConfigProvider } from 'antd-mobile'
 import React, { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'
-import { useRoutes } from 'react-router-dom'
+import { useLocation, useRoutes } from 'react-router-dom'
 import { routers } from './router'
 import TabBars from './components/TabBars'
 import DEFAULT_CONFIG from './././config'
@@ -9,6 +9,8 @@ import './App.scss'
 
 export default function App() {
   const mode = useSelector(state => state.mode)
+  const location = useLocation()
+
   const { dark, light } = DEFAULT_CONFIG
   const colorPrimary = mode ? dark.COLOR : light.COLOR
 
@@ -23,7 +25,10 @@ export default function App() {
       <div style={{ background: colorPrimary }}>
 
         {element}
-        <TabBars />
+
+        {
+          location.pathname == '/home' || location.pathname == '/podcasts' ? <TabBars /> : ''
+        }
       </div>
     </ConfigProvider>
   )

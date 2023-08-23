@@ -1,7 +1,7 @@
 .tjTitle{
     display: flex;
     justify-content: space-between;
-    padding: 0 12px;
+    padding:12px 12px 0 12px;
     .left{
        span{
         font-weight: 700;
@@ -21,6 +21,8 @@
 
 .navs{
     margin-top: 15px;
+    padding-bottom: 10px;
+
     ::-webkit-scrollbar{
         width: 0;
      }
@@ -28,8 +30,10 @@
         display: flex;
         width: 100%;
         overflow-y: auto;
+    
         li{
-            padding: 0 10px;
+            padding: 0 10px 10px 10px;
+          
             width: 30%;
             position: relative;
             .playCount{
@@ -38,7 +42,6 @@
                 top: 5px;
                 color: #fff;
                 z-index: 999;
-              
                 padding: 0  5px 5px 0;
                 display: flex;
                 justify-items: right;
@@ -52,6 +55,7 @@
                 width: 120px;
                 border-radius: 15px;
                 filter:brightness(80%);
+              
             }
         
             p{

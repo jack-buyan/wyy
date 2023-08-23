@@ -43,5 +43,12 @@ export default {
         get: async function (params) {
             return await http.get(this.url, params);
         }
+    },
+    playlist: {
+        url: `${config.API_URL}/playlist/detail`,
+        name: '歌单',
+        get: async function (params) {
+            return await http.get(this.url, params);
+        }
     }
 }
