@@ -13,10 +13,16 @@ const infoSlice = createSlice({
         setMode: (state, action) => {
             localStorage.setItem('COLOR', JSON.stringify(action.payload))
             state.mode = action.payload
-
+        },
+        updatePlayList: (state, action) => {
+            state.playList = action.payload
+            console.log(state.playList);
+        },
+        updatePlayListIndex: (state, action) => {
+            state.playListIndex = action.payload
 
         }
     }
 })
-export const { setColorPrimary, setMode } = infoSlice.actions
+export const { setColorPrimary, setMode, updatePlayList, updatePlayListIndex } = infoSlice.actions
 export default infoSlice.reducer

@@ -50,5 +50,12 @@ export default {
         get: async function (params) {
             return await http.get(this.url, params);
         }
+    },
+    song: {
+        url: `${config.API_URL}/playlist/track/all`,
+        name: '获取歌单的所有歌曲',
+        get: async function (params) {
+            return await http.get(this.url, params);
+        }
     }
 }
