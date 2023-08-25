@@ -1,5 +1,5 @@
 import React from 'react'
-import { TabBar } from 'antd-mobile'
+import { TabBar, Divider } from 'antd-mobile'
 import {
     AppOutline,
     MessageOutline,
@@ -47,6 +47,11 @@ export default function TabBars() {
     }
     return (
         <div style={{ position: 'fixed', width: '100%', bottom: '0', background: `${mode ? DEFAULT_CONFIG.dark.COLOR : '#fff'}` }}>
+            <Divider style={{
+                margin: '0',
+                borderColor: `${mode ? 'rgba(44, 44, 44,0.3)' : '#f1f1f1'}`,
+
+            }} />
             <TabBar onChange={val => getValue(val)}>
                 {tabs.map(item => (
                     <TabBar.Item key={item.key} icon={item.icon} title={item.title} />

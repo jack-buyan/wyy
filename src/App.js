@@ -29,12 +29,13 @@ export default function App() {
         {element}
 
         {
-          isplayNav ? <PlayerNav num={location.pathname == '/home' || location.pathname == '/podcasts' || location.pathname == '/' ? 49 : 0} /> : ''
+          isplayNav ? <PlayerNav num={location.pathname == '/home' || location.pathname == '/podcasts' || location.pathname == '/' ? 45 : 0} /> : ''
         }
 
 
 
         {
+
           location.pathname == '/home' || location.pathname == '/podcasts' || location.pathname == '/' ? <TabBars /> : ''
         }
       </div>

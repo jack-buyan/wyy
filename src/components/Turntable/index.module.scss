@@ -1,0 +1,14 @@
+.img_al{
+    animation: rotate_al 10s linear infinite;
+}
+
+@keyframes rotate_al {
+    0% {
+      transform: rotateZ(0deg);
+    }
+
+    100% {
+      transform: rotateZ(360deg);
+    }
+
+  }

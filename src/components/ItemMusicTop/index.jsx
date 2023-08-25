@@ -1,7 +1,7 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import styles from './index.module.scss'
-import { updatePlayList, updatePlayListIndex } from '../../store/reducers'
+import { updatePlayList, updatePlayListIndex, updateIsplayNavShow } from '../../store/reducers'
 import { useDispatch } from 'react-redux'
 export default function ItemMusicTop({ playlist: { playlist }, itemList: { songs } }) {
     const navigate = useNavigate()
@@ -11,6 +11,7 @@ export default function ItemMusicTop({ playlist: { playlist }, itemList: { songs
     function playCurrent(index) {
         dispatch(updatePlayList(songs))
         dispatch(updatePlayListIndex(index))
+        dispatch(updateIsplayNavShow(true))
     }
     function Nav() {
         return (
@@ -102,7 +103,7 @@ export default function ItemMusicTop({ playlist: { playlist }, itemList: { songs
                                 {
                                     e.ar.map((s, index) => (
 
-                                        <p key={index} style={{ margin: '0', paddingTop: '5px', fontSize: '15px', color: 'rgb(200,188,212)', paddingRight: '2px' }}>{s.name}</p>
+                                        <p key={index} style={{ margin: '0', paddingTop: '5px', fontSize: '15px', color: '#fff', paddingRight: '2px' }}>{s.name}</p>
                                     ))
                                 }
                             </div>

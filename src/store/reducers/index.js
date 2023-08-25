@@ -16,13 +16,17 @@ const infoSlice = createSlice({
         },
         updatePlayList: (state, action) => {
             state.playList = action.payload
-            console.log(state.playList);
         },
         updatePlayListIndex: (state, action) => {
             state.playListIndex = action.payload
-
+        },
+        updateIsplayNavShow: (state, action) => {
+            state.isplayNav = action.payload
+        },
+        updateIsbtnShow: (state, action) => {
+            state.isbtnShow = action.payload
         }
     }
 })
-export const { setColorPrimary, setMode, updatePlayList, updatePlayListIndex } = infoSlice.actions
+export const { setColorPrimary, setMode, updatePlayList, updatePlayListIndex, updateIsplayNavShow, updateIsbtnShow } = infoSlice.actions
 export default infoSlice.reducer
